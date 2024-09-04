@@ -1,35 +1,37 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import Alert from "./components/Alert";
+import ExerciseButton from "./components/ExerciseButton";
 
 function App() {
-  const [count, setCount] = useState(0)
+  // let items = ["str1", "str2", "str3", "str4", "str5"];
+
+  // const handleSelectItem = (item: string) => {
+  //   console.log(item);
+  // };
+
+  // return (
+  //   <div>
+  //     <ListGroup
+  //       items={items}
+  //       heading={"List"}
+  //       onSelectItem={handleSelectItem}
+  //     />
+  //   </div>
+  // );
+  const [alert, setalert] = useState(true);
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div>
+      {alert && <Alert onClick={() => setalert(false)}>Hello</Alert>}
+      <ExerciseButton
+        onClick={() => {
+          setalert(true);
+        }}
+      >
+        My Button
+      </ExerciseButton>
+    </div>
+  );
 }
 
-export default App
+export default App;
