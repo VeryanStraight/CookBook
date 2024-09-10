@@ -1,36 +1,30 @@
-import { useState } from "react";
-import Alert from "./components/Alert";
-import ExerciseButton from "./components/ExerciseButton";
+import HomePage from "./components/HomePage";
+import NavBarBig from "./components/NavBarBig";
+import NavBarSmall from "./components/NavBarSmall";
+import RecipeVeiw from "./components/RecipeVeiw";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
-  // let items = ["str1", "str2", "str3", "str4", "str5"];
-
-  // const handleSelectItem = (item: string) => {
-  //   console.log(item);
-  // };
-
-  // return (
-  //   <div>
-  //     <ListGroup
-  //       items={items}
-  //       heading={"List"}
-  //       onSelectItem={handleSelectItem}
-  //     />
-  //   </div>
-  // );
-  const [alert, setalert] = useState(true);
+  // const title = "title";
+  // const ingredients = ["bgf rg", "rvrv", "rergr", "revtrh", "rvevrgg"];
+  // const method =
+  //   "dsrblhnakc ;ljbn;cam po;rblgfbvn kjfb;nk; kmth lbglksmge ;nghfhtnnfpgohrcgihiurh nd kh fihrghg l;dfl \n kncag akeJE REAGFJH kdf hgsdlfvldjfhvfkghmk hsdflmvj hfkjhfdmkg kdjhlsdhkkkkkvn";
+  // const catgory = "cake";
+  // const catgorys = ["cake", "pudding", "dinner", "snack", "lunch"];
 
   return (
-    <div>
-      {alert && <Alert onClick={() => setalert(false)}>Hello</Alert>}
-      <ExerciseButton
-        onClick={() => {
-          setalert(true);
-        }}
-      >
-        My Button
-      </ExerciseButton>
-    </div>
+    <Router>
+      <div className="d-flex flex-column flex-md-row">
+        <NavBarSmall />
+        <NavBarBig />
+        <div className="flex-grow-1 p-3">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/recipe" element={<RecipeVeiw />} />
+          </Routes>
+        </div>
+      </div>
+    </Router>
   );
 }
 
