@@ -1,0 +1,20 @@
+{
+    "_id":{"$oid":"66e088644795cc26bfebd7b3"},
+    "name": "Bacon & Kimchi Noodles",
+    "serves": "2",
+    "ingredients": [
+      {"ingredient": "pre-cooked udon noodles", "amount": "400g (2 packets)"},
+      {"ingredient": "vegetable oil", "amount": "1 tbsp"},
+      {"ingredient": "bacon, diced", "amount": "100g"},
+      {"ingredient": "onion, diced", "amount": "1"},
+      {"ingredient": "Korean gochujang", "amount": "3 tbsp"},
+      {"ingredient": "kimchi, sliced", "amount": "¼ cup"},
+      {"ingredient": "finely sliced spring onion", "amount": "some"},
+      {"ingredient": "soy sauce", "amount": "1 tbsp"},
+      {"ingredient": "kimchi juice", "amount": "3 tbsp"},
+      {"ingredient": "honey", "amount": "1 tbsp"},
+      {"ingredient": "sesame oil", "amount": "1 tbsp"}
+    ],
+    "instructions": "cook the noodles acording to the packet instructions. Heat 1 tablespoon of vegetable oil in a wok or frying pan over high heat. Add the bacon and cook for 1-2 minutes or until starting to get crispy at the edges. Then add the onion and stir-fry for another minute. Add the gochujang paste and cook for another minute. Add the kimchi and stir-fry for another 30 seconds. Add the drained noodles and mix until combined. Add the rest of the ingredients and cook for another 30 seconds or until thickened slightly. Serve noodles topped with the spring onions."
+}
+
