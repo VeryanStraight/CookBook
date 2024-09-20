@@ -1,12 +1,12 @@
 const mongoose = require("mongoose")
 
-const tagsSchema = new mongoose.Schema({
+const tagSchema = new mongoose.Schema({
     tag: {
         type: String,
         required: true
     }
 });
 
-const Tag = mongoose.model('Tag', recipeSchema);
+const Tag = mongoose.model('Tag', tagSchema);
 
 module.exports = Tag;
