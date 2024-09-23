@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import axios from "axios";
 
 const Search = () => {
@@ -8,7 +8,7 @@ const Search = () => {
   const fetchData = async (search: string) => {
     try {
       const encodedSearch = encodeURIComponent(search.trim());
-      console.log(encodedSearch);
+      // console.log(encodedSearch);
 
       const res = await axios.get(
         `http://localhost:4000/recipe/search/${encodedSearch}`
