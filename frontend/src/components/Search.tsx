@@ -1,9 +1,19 @@
 import { useState } from "react";
 import axios from "axios";
+import SearchResults from "./SearchResults";
+
+export interface SearchItem {
+  id_: string;
+  name: String;
+  serves: number;
+  ingredients: String[];
+  instructions: String;
+  tags: String[];
+}
 
 const Search = () => {
   const [search, setSearch] = useState("");
-  const [searchData, setSearchData] = useState([]);
+  const [searchData, setSearchData] = useState<SearchItem[]>([]);
 
   const fetchData = async (search: string) => {
     try {
@@ -40,6 +50,7 @@ const Search = () => {
           Search
         </button>
       </form>
+      {searchData.length > 0 && <SearchResults items={searchData} />}
     </div>
   );
 };
