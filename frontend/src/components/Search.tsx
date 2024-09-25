@@ -6,7 +6,7 @@ export interface SearchItem {
   id_: string;
   name: String;
   serves: number;
-  ingredients: String[];
+  ingredients: [{ amount: String; ingredient: String }];
   instructions: String;
   tags: String[];
 }
@@ -18,7 +18,6 @@ const Search = () => {
   const fetchData = async (search: string) => {
     try {
       const encodedSearch = encodeURIComponent(search.trim());
-      // console.log(encodedSearch);
 
       const res = await axios.get(
         `http://localhost:4000/recipe/search/${encodedSearch}`

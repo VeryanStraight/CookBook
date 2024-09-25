@@ -1,23 +1,22 @@
 import IngredentsList from "./IngredentsList";
+import { useLocation } from "react-router-dom";
+import { SearchItem } from "./Search";
 
-interface Props {
-  title?: string;
-  ingredients?: string[];
-  method?: string;
-}
+const RecipeVeiw = () => {
+  const location = useLocation();
+  const item: SearchItem = location.state;
 
-const RecipeVeiw = ({
-  title = "not found",
-  ingredients = [],
-  method = "",
-}: Props) => {
   return (
     <main className="container mt-4">
       <div className="row justify-content-center">
         <header>
-          <h1 className="text-center text-dark format-heading">{title}</h1>
-          <IngredentsList items={ingredients} />
-          <p style={{ whiteSpace: "pre-line" }}>{method}</p>
+          <h1 className="text-center text-dark format-heading">{item.name}</h1>
+          <IngredentsList
+            items={item.ingredients.map((val) => {
+              return `${val.amount} ${val.ingredient}`;
+            })}
+          />
+          <p style={{ whiteSpace: "pre-line" }}>{item.instructions}</p>
         </header>
       </div>
     </main>
