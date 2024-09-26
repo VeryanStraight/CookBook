@@ -3,7 +3,7 @@ import axios from "axios";
 import SearchResults from "./SearchResults";
 
 export interface SearchItem {
-  id_: string;
+  _id: string;
   name: String;
   serves: number;
   ingredients: [{ amount: String; ingredient: String }];
@@ -30,7 +30,12 @@ const Search = () => {
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    fetchData(search);
+
+    if (search != "") {
+      fetchData(search);
+    } else {
+      setSearchData([]);
+    }
     console.log(searchData);
   };
 

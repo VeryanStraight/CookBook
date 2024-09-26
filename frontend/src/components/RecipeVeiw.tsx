@@ -7,15 +7,18 @@ const RecipeVeiw = () => {
   const item: SearchItem = location.state;
 
   return (
-    <main className="container mt-4">
+    <main className="container mt-md-4">
       <div className="row justify-content-center">
         <header>
-          <h1 className="text-center text-dark format-heading">{item.name}</h1>
+          <h1 className="text-center text-dark format-heading mb-4">
+            {item.name}
+          </h1>
           <IngredentsList
             items={item.ingredients.map((val) => {
               return `${val.amount} ${val.ingredient}`;
             })}
           />
+          <h1 className="mt-4">Method</h1>
           <p style={{ whiteSpace: "pre-line" }}>{item.instructions}</p>
         </header>
       </div>
