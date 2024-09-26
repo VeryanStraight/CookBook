@@ -17,7 +17,11 @@ const AddRecipe = () => {
 
   //method to convert text to ingredents and add to the list
   const addIngredient = () => {
-    const ingredentsList: string[] = ingredientsText.split("\n");
+    if (ingredientsText === "") {
+      return;
+    }
+
+    const ingredentsList: string[] = ingredientsText.trim().split("\n");
 
     ingredentsList.forEach((i: string) => {
       const [amount, ingredient] = i.split("|");
@@ -36,6 +40,12 @@ const AddRecipe = () => {
         return i !== index;
       })
     );
+  };
+
+  const handleSetServes = (s: string) => {
+    if (s === "" || /^[+-]?\d+$/.test(s)) {
+      setServes(Number(s));
+    }
   };
 
   //will add the new recipe to the database (at the moment just debuging)
@@ -71,7 +81,7 @@ const AddRecipe = () => {
           />
         </Form.Group>
 
-        {/* ingredents input and list */}
+        {/* ingredients input and list */}
         <Form.Group controlId="formIngredients">
           <Form.Label>Ingredients</Form.Label>
           <Button variant="primary" type="button" onClick={addIngredient}>
@@ -94,20 +104,41 @@ const AddRecipe = () => {
           )}
         </Form.Group>
 
+        {/* method input */}
+        <Form.Group controlId="formMethod">
+          <Form.Label>Method</Form.Label>
+          <Form.Control
+            as="textarea"
+            rows={3}
+            value={instructions}
+            placeholder="Add Method"
+            onChange={(e) => setInstructions(e.target.value)}
+          />
+        </Form.Group>
+
+        {/* serves input */}
+        <Form.Group controlId="formServes">
+          <Form.Label>Number Serves</Form.Label>
+          <Form.Control
+            type="number"
+            value={serves}
+            onChange={(e) => handleSetServes(e.target.value)}
+          />
+        </Form.Group>
+
         {/* to do
         -make a form for ingrededts:
-            add one by one or in a group (seprate by n/)
-            how to tell what are the amounts and what are the ingredents (have some kind of seprator |?)
-            show list of added - when you click on one make pop up askin if you want to delete
             make a reorder option? - not sure how i would do this
-            have a reset ingredents button
+            have a reset ingredents button?
 
         -make a form for method
             try if textArea does what I want
         -make a serves input
             is there some sort of number only input already of do I need to add my own checks
         -make dropdown for adding tags
-            use method simmlar to ingredents for adding/removing 
+            use method simmlar to ingredents for adding/removing
+            need to make backend get tags to fill in the drop down
+            find out what the mathod was that ran first 
 
         ------------------------
         |     title            |
@@ -120,6 +151,12 @@ const AddRecipe = () => {
         ------------------------
         ------------------------
         ------------------------
+        ------------------------
+
+        ------------------------
+        |        method        |
+        |      text area       |
+        |                      |
         ------------------------
 
         -------------  ----------
