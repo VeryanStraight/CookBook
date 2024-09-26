@@ -1,3 +1,4 @@
+import AddRecipe from "./components/AddRecipe";
 import HomePage from "./components/HomePage";
 import NavBarBig from "./components/NavBarBig";
 import NavBarSmall from "./components/NavBarSmall";
@@ -18,6 +19,7 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/recipe" element={<RecipeVeiw />} />
+            <Route path="/addRecipe" element={<AddRecipe />} />
           </Routes>
         </div>
       </div>

@@ -1,4 +1,5 @@
 import { Navbar, Nav } from "react-bootstrap";
+import NavContents from "./NavContents";
 
 const NavBarSmall = () => {
   return (
@@ -6,7 +7,7 @@ const NavBarSmall = () => {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="ml-auto">
-          <Nav.Link href="/">Home</Nav.Link>
+          <NavContents />
         </Nav>
       </Navbar.Collapse>
     </Navbar>

@@ -1,4 +1,5 @@
 import { Nav } from "react-bootstrap";
+import NavContents from "./NavContents";
 
 const NavBarBig = () => {
   return (
@@ -10,7 +11,7 @@ const NavBarBig = () => {
         className="flex-column p-3 bg-body-tertiary"
         style={{ height: "100%" }}
       >
-        <Nav.Link href="/">Home</Nav.Link>
+        <NavContents />
       </Nav>
     </div>
   );
