@@ -12,14 +12,15 @@ router.get('/recipe/search/:name', async (req, res) => {
     }
   });
 
-//   router.get('/recipe/search/', async (req, res) => {
-//     try {
-//       const recipes = await Recipe.get();
-//       res.json(recipes);
-//     } catch (err) {
-//       res.status(500).json({ message: err.message });
-//     }
-//   });
+router.get('/tags', async (req, res) => {
+  try {
+    const recipes = await Tag.find({});
+    res.json(recipes); 
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
   
 
 module.exports = router
