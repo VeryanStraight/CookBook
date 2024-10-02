@@ -1,7 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import EditableIngredentList from "./EditableIngredentList";
+import axios from "axios";
+import EditableList from "./EditableList";
+
+interface tags {
+  _id: string;
+  tag: string;
+}
 
 const AddRecipe = () => {
   //setting up variables
@@ -12,7 +19,21 @@ const AddRecipe = () => {
   const [ingredientsText, setIngredientsText] = useState<string>("");
   const [serves, setServes] = useState<number>(-1);
   const [instructions, setInstructions] = useState<string>("");
-  const [tags, setTags] = useState<string[]>([]);
+  const [tags, setTags] = useState<tags[]>([]);
+  const [selectedTags, setSelectedtags] = useState<string[]>([]);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    try {
+      const res = await axios.get(`http://localhost:4000/tags`);
+      setTags(res.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   //method to convert text to ingredents and add to the list
   const addIngredient = () => {
@@ -39,6 +60,22 @@ const AddRecipe = () => {
         return i !== index;
       })
     );
+  };
+
+  const removeTag = (index: number) => {
+    console.log(index);
+    setSelectedtags((prev) =>
+      prev.filter((_, i) => {
+        return i !== index;
+      })
+    );
+  };
+
+  const handleSetTag = (s: string) => {
+    if (s === "") {
+      return;
+    }
+    setSelectedtags((prev) => [...prev, s]);
   };
 
   const handleSetServes = (s: string) => {
@@ -123,6 +160,27 @@ const AddRecipe = () => {
             value={serves}
             onChange={(e) => handleSetServes(e.target.value)}
           />
+        </Form.Group>
+
+        <Form.Group controlId="formTags">
+          <Form.Label>Tags</Form.Label>
+          <Form.Select
+            onChange={(e) => {
+              handleSetTag(e.target.value);
+              console.log(e.target.value);
+            }}
+          >
+            {/*ToDo: make a balnk default that cant be added, make it a set, selectedTags needs to rember id */}
+            {tags?.map((tag) => (
+              <option value={tag.tag}>{tag.tag}</option>
+            ))}
+          </Form.Select>
+          {selectedTags.length > 0 && (
+            <EditableList
+              items={selectedTags.map((tag) => ({ id: tag, value: tag }))}
+              removeItem={removeTag}
+            ></EditableList>
+          )}
         </Form.Group>
 
         {/* to do
