@@ -10,7 +10,7 @@ router.get('/recipe/search/:name', async (req, res) => {
     } catch (err) {
       res.status(500).json({ message: err.message });
     }
-  });
+});
 
 router.get('/tags', async (req, res) => {
   try {
@@ -21,6 +21,15 @@ router.get('/tags', async (req, res) => {
   }
 });
 
+router.post('/recipe', async (req, res) =>{
+  try {
+    const recipe = new Recipe(req.body);
+    const newRecipe = await recipe.save(); 
+    res.status(201).json(newRecipe);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
   
 
 module.exports = router
