@@ -1,10 +1,10 @@
 import IngredentsList from "./IngredentsList";
 import { useLocation } from "react-router-dom";
-import { SearchItem } from "./Search";
+import Recipe from "./interfaces/Recipe";
 
 const RecipeVeiw = () => {
   const location = useLocation();
-  const item: SearchItem = location.state;
+  const item: Recipe = location.state;
 
   return (
     <main className="container mt-md-4">

@@ -1,19 +1,11 @@
 import { useState } from "react";
 import axios from "axios";
 import SearchResults from "./SearchResults";
-
-export interface SearchItem {
-  _id: string;
-  name: String;
-  serves: number;
-  ingredients: [{ amount: String; ingredient: String }];
-  instructions: String;
-  tags: String[];
-}
+import Recipe from "./interfaces/Recipe";
 
 const Search = () => {
   const [search, setSearch] = useState("");
-  const [searchData, setSearchData] = useState<SearchItem[]>([]);
+  const [searchData, setSearchData] = useState<Recipe[]>([]);
 
   const fetchData = async (search: string) => {
     try {

@@ -4,11 +4,9 @@ import Form from "react-bootstrap/Form";
 import EditableIngredentList from "./EditableIngredentList";
 import axios from "axios";
 import EditableList from "./EditableList";
-
-interface tags {
-  _id: string;
-  tag: string;
-}
+import Tag from "./interfaces/Tag";
+import Recipe from "./interfaces/Recipe";
+import { Alert } from "react-bootstrap";
 
 const AddRecipe = () => {
   //setting up variables
@@ -19,8 +17,9 @@ const AddRecipe = () => {
   const [ingredientsText, setIngredientsText] = useState<string>("");
   const [serves, setServes] = useState<number>(-1);
   const [instructions, setInstructions] = useState<string>("");
-  const [tags, setTags] = useState<tags[]>([]);
+  const [tags, setTags] = useState<Tag[]>([]);
   const [selectedTags, setSelectedtags] = useState<string[]>([]);
+  const [message, setMessage] = useState<string>();
 
   useEffect(() => {
     fetchData();
@@ -84,9 +83,27 @@ const AddRecipe = () => {
     }
   };
 
-  //will add the new recipe to the database (at the moment just debuging)
+  //will add the new recipe to the database
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    const recipe: Recipe = {
+      _id: undefined,
+      name: name,
+      serves: serves,
+      ingredients: ingredients,
+      instructions: instructions,
+      tags: tags.map((tag) => tag._id),
+    };
+
+    try {
+      axios.put(`http://localhost:4000/recipe`, recipe);
+
+      setMessage("added recipe");
+    } catch (err) {
+      setMessage("couldn't add recipe: " + err);
+      console.log(err);
+    }
 
     console.log(name);
     console.log(ingredients);
@@ -182,6 +199,7 @@ const AddRecipe = () => {
             ></EditableList>
           )}
         </Form.Group>
+        {message && <Alert>{message}</Alert>}
 
         {/* to do
             -need to make selectedTags a set and include id
