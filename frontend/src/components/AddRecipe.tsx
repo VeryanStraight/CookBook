@@ -184,18 +184,15 @@ const AddRecipe = () => {
         </Form.Group>
 
         {/* to do
-        -make a form for ingrededts:
+            -need to make selectedTags a set and include id
+            -make ingredents list use editable list and remove ingredents editable list
+            -fix error with tags list
+            -make it save to database
+
+        improvements:
+        -ingrededts:
             make a reorder option? - not sure how i would do this
             have a reset ingredents button?
-
-        -make a form for method
-            try if textArea does what I want
-        -make a serves input
-            is there some sort of number only input already of do I need to add my own checks
-        -make dropdown for adding tags
-            use method simmlar to ingredents for adding/removing
-            need to make backend get tags to fill in the drop down
-            find out what the mathod was that ran first 
 
         ------------------------
         |     title            |
