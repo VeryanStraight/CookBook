@@ -5,6 +5,7 @@ const NavContents = () => {
     <>
       <Nav.Link href="/">Home</Nav.Link>
       <Nav.Link href="/addRecipe">addRecipe</Nav.Link>
+      <Nav.Link href="/deleteRecipe">deleteRecipe</Nav.Link>
     </>
   );
 };

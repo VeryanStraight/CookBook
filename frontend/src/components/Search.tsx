@@ -3,7 +3,11 @@ import axios from "axios";
 import SearchResults from "./SearchResults";
 import Recipe from "./interfaces/Recipe";
 
-const Search = () => {
+interface Props {
+  onClick: (recipe: Recipe) => void;
+}
+
+const Search = ({ onClick }: Props) => {
   const [search, setSearch] = useState("");
   const [searchData, setSearchData] = useState<Recipe[]>([]);
 
@@ -46,7 +50,9 @@ const Search = () => {
           Search
         </button>
       </form>
-      {searchData.length > 0 && <SearchResults items={searchData} />}
+      {searchData.length > 0 && (
+        <SearchResults items={searchData} onClick={onClick} />
+      )}
     </div>
   );
 };

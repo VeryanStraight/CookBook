@@ -1,4 +1,5 @@
 import AddRecipe from "./components/AddRecipe";
+import DeleteRecipe from "./components/deleteRecipe";
 import HomePage from "./components/HomePage";
 import NavBarBig from "./components/NavBarBig";
 import NavBarSmall from "./components/NavBarSmall";
@@ -20,6 +21,7 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/recipe" element={<RecipeVeiw />} />
             <Route path="/addRecipe" element={<AddRecipe />} />
+            <Route path="/deleteRecipe" element={<DeleteRecipe />} />
           </Routes>
         </div>
       </div>

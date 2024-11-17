@@ -1,14 +1,22 @@
+import { useNavigate } from "react-router-dom";
+import Recipe from "./interfaces/Recipe";
 import Search from "./Search";
 import "./style.css";
 
 const HomePage = () => {
+  const navigate = useNavigate();
+
+  const onClick = (recipe: Recipe) => {
+    navigate("/recipe", { state: recipe });
+  };
+
   return (
     <main className="container mt-4">
       <div className="row justify-content-center">
         <header>
           <h1 className="text-center text-dark format-heading">Recipe Book</h1>
         </header>
-        <Search />
+        <Search onClick={onClick} />
       </div>
     </main>
   );
