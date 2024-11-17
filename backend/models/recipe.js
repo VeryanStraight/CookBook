@@ -10,8 +10,9 @@ const recipeSchema = new mongoose.Schema({
         required: false
     },
     ingredients:[{
-        ingredent: {type: String, require: true},
-        amount: {type: String, required: true}
+        ingredient: {type: String, require: true},
+        amount: {type: String, required: true},
+        _id: false
     }],
     instructions:{
         type: String,

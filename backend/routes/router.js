@@ -21,7 +21,7 @@ router.get('/tags', async (req, res) => {
   }
 });
 
-router.post('/recipe', async (req, res) =>{
+router.post('/recipe', async (req, res) => {
   try {
     const recipe = new Recipe(req.body);
     const newRecipe = await recipe.save(); 
@@ -30,6 +30,7 @@ router.post('/recipe', async (req, res) =>{
     res.status(500).json({ message: err.message });
   }
 });
+
   
 
 module.exports = router

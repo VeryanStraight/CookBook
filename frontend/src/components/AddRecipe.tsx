@@ -50,6 +50,7 @@ const AddRecipe = () => {
         { amount, ingredient },
       ]);
     });
+    console.log(ingredients);
   };
 
   const removeIngredient = (index: number) => {
@@ -84,7 +85,7 @@ const AddRecipe = () => {
   };
 
   //will add the new recipe to the database
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     const recipe: Recipe = {
@@ -95,21 +96,16 @@ const AddRecipe = () => {
       instructions: instructions,
       tags: tags.map((tag) => tag._id),
     };
+    console.log(recipe);
 
     try {
-      axios.put(`http://localhost:4000/recipe`, recipe);
+      await axios.post(`http://localhost:4000/recipe`, recipe);
 
       setMessage("added recipe");
     } catch (err) {
       setMessage("couldn't add recipe: " + err);
       console.log(err);
     }
-
-    console.log(name);
-    console.log(ingredients);
-    console.log(serves);
-    console.log(instructions);
-    console.log(tags);
   };
 
   //stops the form from submitting each time someone presses enter
