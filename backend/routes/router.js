@@ -33,12 +33,18 @@ router.post('/recipe', async (req, res) => {
 
 router.delete('/recipe/:id', async (req, res) => {
   try {
-    Recipe.deleteOne();
-    res.status(201).json(newRecipe);
+    const deletedRecipe = await Recipe.deleteOne({ _id: req.params.id }); 
+
+    if (deletedRecipe.deletedCount === 0) {
+      return res.status(404).json({ message: 'Recipe not found' });
+    }
+
+    res.status(200).json({ message: 'Recipe deleted successfully' });
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
 });
+
 
   
 

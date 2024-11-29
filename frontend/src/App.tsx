@@ -3,7 +3,7 @@ import DeleteRecipe from "./components/deleteRecipe";
 import HomePage from "./components/HomePage";
 import NavBarBig from "./components/NavBarBig";
 import NavBarSmall from "./components/NavBarSmall";
-import RecipeVeiw from "./components/RecipeVeiw";
+import RecipeVeiw from "./components/RecipeView";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
