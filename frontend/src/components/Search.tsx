@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useImperativeHandle, forwardRef } from "react";
 import axios from "axios";
 import SearchResults from "./SearchResults";
 import Recipe from "./interfaces/Recipe";
@@ -7,14 +7,17 @@ interface Props {
   onClick: (recipe: Recipe) => void;
 }
 
-const Search = ({ onClick }: Props) => {
+export interface SearchHandles {
+  triggerSearch: () => void;
+}
+
+const Search = forwardRef<SearchHandles, Props>(({ onClick }, ref) => {
   const [search, setSearch] = useState("");
   const [searchData, setSearchData] = useState<Recipe[]>([]);
 
   const fetchData = async (search: string) => {
     try {
       const encodedSearch = encodeURIComponent(search.trim());
-
       const res = await axios.get(
         `http://localhost:4000/recipe/search/${encodedSearch}`
       );
@@ -24,10 +27,23 @@ const Search = ({ onClick }: Props) => {
     }
   };
 
+  const triggerSearch = () => {
+    if (search !== "") {
+      fetchData(search);
+    } else {
+      setSearchData([]);
+    }
+    console.log(searchData);
+  };
+
+  useImperativeHandle(ref, () => ({
+    triggerSearch,
+  }));
+
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (search != "") {
+    if (search !== "") {
       fetchData(search);
     } else {
       setSearchData([]);
@@ -55,6 +71,6 @@ const Search = ({ onClick }: Props) => {
       )}
     </div>
   );
-};
+});
 
 export default Search;

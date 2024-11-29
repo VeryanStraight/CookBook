@@ -1,12 +1,12 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Recipe from "./interfaces/Recipe";
-import Search from "./Search";
+import Search, { SearchHandles } from "./Search";
 import { Button, Modal } from "react-bootstrap";
-import RecipeVeiw from "./RecipeView";
 import RecipeView from "./RecipeView";
 import axios from "axios";
 
 const DeleteRecipe = () => {
+  const searchRef = useRef<SearchHandles>(null);
   const [recipe, setRecipe] = useState<Recipe>();
   const [modalOpen, setModalOpen] = useState<boolean>(false);
 
@@ -22,26 +22,34 @@ const DeleteRecipe = () => {
 
   const deleteRecipe = async () => {
     try {
+      if (!recipe?._id) {
+        console.error("Recipe ID is undefined");
+        return;
+      }
+
       const res = await axios.delete(
         `http://localhost:4000/recipe/${recipe?._id}`
       );
       closeModal();
+      if (searchRef.current) {
+        searchRef.current.triggerSearch();
+      }
       console.log(res.data);
     } catch (err) {
       console.log(err);
     }
   };
 
-  //todo - add search but on click give delete option?
   const onClick = (recipe: Recipe) => {
     console.log("clicked on recipe");
     openModal(recipe);
     console.log(modalOpen);
   };
+
   return (
     <>
       <h1>Delete Recipe</h1>
-      <Search onClick={onClick}></Search>
+      <Search ref={searchRef} onClick={onClick} />
       <Modal
         show={modalOpen}
         onHide={closeModal}
@@ -54,7 +62,7 @@ const DeleteRecipe = () => {
         <Modal.Body>
           {recipe && (
             <div>
-              <RecipeView recipe={recipe}></RecipeView>
+              <RecipeView recipe={recipe} />
             </div>
           )}
         </Modal.Body>
