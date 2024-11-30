@@ -1,6 +1,7 @@
 import AddRecipe from "./components/AddRecipe";
 import DeleteRecipe from "./components/DeleteRecipe";
 import HomePage from "./components/HomePage";
+import ManageTags from "./components/ManageTags";
 import NavBarBig from "./components/NavBarBig";
 import NavBarSmall from "./components/NavBarSmall";
 import RecipeVeiw from "./components/RecipeView";
@@ -18,6 +19,7 @@ function App() {
             <Route path="/recipe" element={<RecipeVeiw />} />
             <Route path="/addRecipe" element={<AddRecipe />} />
             <Route path="/deleteRecipe" element={<DeleteRecipe />} />
+            <Route path="/manageTags" element={<ManageTags />} />
           </Routes>
         </div>
       </div>

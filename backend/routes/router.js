@@ -14,8 +14,8 @@ router.get('/recipe/search/:name', async (req, res) => {
 
 router.get('/tags', async (req, res) => {
   try {
-    const recipes = await Tag.find({});
-    res.json(recipes); 
+    const tags = await Tag.find({});
+    res.json(tags); 
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
