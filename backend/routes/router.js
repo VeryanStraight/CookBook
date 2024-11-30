@@ -43,7 +43,7 @@ router.post('/tag', async (req, res) => {
 
 router.delete('/recipe/:id', async (req, res) => {
   try {
-    const deletedRecipe = await Recipe.deleteOne({ _id: req.params.id }); 
+    const deletedRecipe = await Recipe.findByIdAndDelete(req.params.id); 
 
     if (deletedRecipe.deletedCount === 0) {
       return res.status(404).json({ message: 'Recipe not found' });
@@ -57,7 +57,7 @@ router.delete('/recipe/:id', async (req, res) => {
 
 router.delete('/tag/:id', async (req, res) =>{
   try {
-      const deletedTag = await Tag.deleteOne({_id: req.params.id });
+      const deletedTag = await Tag.findByIdAndDelete(req.params.id);
 
       if (deletedTag.deletedCount === 0){
         return res.status(404).json({message: 'Tag not found'});

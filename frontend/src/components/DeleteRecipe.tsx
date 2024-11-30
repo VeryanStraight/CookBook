@@ -57,7 +57,7 @@ const DeleteRecipe = () => {
         centered
       >
         <Modal.Header closeButton>
-          <Modal.Title>Delete Recipe?</Modal.Title>
+          <Modal.Title>Delete Recipe</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           {recipe && (
