@@ -23,3 +23,7 @@ npm run dev
 
 location
 http://localhost:5173/
+
+usful cmd in VSCode
+rafce for creating new component
+ctrl d for multi cursor

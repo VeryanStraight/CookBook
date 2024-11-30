@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import EditableIngredentList from "./EditableIngredentList";
 import axios from "axios";
 import EditableList from "./EditableList";
 import Tag from "./interfaces/Tag";
@@ -146,10 +145,13 @@ const AddRecipe = () => {
             onChange={(e) => setIngredientsText(e.target.value)}
           />
           {ingredients.length > 0 && (
-            <EditableIngredentList
-              items={ingredients}
-              removeIngredient={removeIngredient}
-            ></EditableIngredentList>
+            <EditableList
+              items={ingredients.map((item) => ({
+                id: item.amount + item.ingredient,
+                value: item.amount + " " + item.ingredient,
+              }))}
+              removeItem={removeIngredient}
+            ></EditableList>
           )}
         </Form.Group>
 
