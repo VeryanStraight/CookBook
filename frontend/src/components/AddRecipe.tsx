@@ -17,7 +17,7 @@ const AddRecipe = () => {
   const [serves, setServes] = useState<number>(-1);
   const [instructions, setInstructions] = useState<string>("");
   const [tags, setTags] = useState<Tag[]>([]);
-  const [selectedTags, setSelectedtags] = useState<string[]>([]);
+  const [selectedTags, setSelectedtags] = useState<Tag[]>([]);
   const [message, setMessage] = useState<string>();
 
   useEffect(() => {
@@ -70,11 +70,11 @@ const AddRecipe = () => {
     );
   };
 
-  const handleSetTag = (s: string) => {
-    if (s === "") {
-      return;
-    }
-    setSelectedtags((prev) => [...prev, s]);
+  const handleSetTag = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedOption = e.target.selectedOptions[0];
+    const tag: string = selectedOption.text;
+    const _id: string = selectedOption.value;
+    setSelectedtags((prev) => [...prev, { _id: _id, tag: tag }]);
   };
 
   const handleSetServes = (s: string) => {
@@ -93,7 +93,7 @@ const AddRecipe = () => {
       serves: serves,
       ingredients: ingredients,
       instructions: instructions,
-      tags: tags.map((tag) => tag._id),
+      tags: selectedTags.map((tag) => tag._id),
     };
     console.log(recipe);
 
@@ -181,18 +181,23 @@ const AddRecipe = () => {
           <Form.Label>Tags</Form.Label>
           <Form.Select
             onChange={(e) => {
-              handleSetTag(e.target.value);
+              handleSetTag(e);
               console.log(e.target.value);
             }}
           >
             {/*ToDo: make a balnk default that cant be added, make it a set, selectedTags needs to rember id */}
             {tags?.map((tag) => (
-              <option value={tag.tag}>{tag.tag}</option>
+              <option key={tag._id} value={tag._id}>
+                {tag.tag}
+              </option>
             ))}
           </Form.Select>
           {selectedTags.length > 0 && (
             <EditableList
-              items={selectedTags.map((tag) => ({ id: tag, value: tag }))}
+              items={selectedTags.map((tag) => ({
+                id: tag._id,
+                value: tag.tag,
+              }))}
               removeItem={removeTag}
             ></EditableList>
           )}
