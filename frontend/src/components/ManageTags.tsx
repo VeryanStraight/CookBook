@@ -12,6 +12,8 @@ const ManageTags = () => {
   const [tags, setTags] = useState<Tag[]>([]);
   const [addModalOpen, setAddModalOpen] = useState<boolean>(false);
   const [newTag, setNewTag] = useState<string>();
+  const [deleteModalOpen, setDeleteModalOpen] = useState<boolean>(false);
+  const [tag, setTag] = useState<Tag>();
 
   useEffect(() => {
     fechTags();
@@ -27,26 +29,36 @@ const ManageTags = () => {
   };
 
   const removeTag = (index: number) => {
-    //ToDo
-    //open confermation modal
-    //delete tag
+    setDeleteModalOpen(true);
+    setTag(tags[index]);
   };
 
   const onClickAdd = () => {
     setAddModalOpen(true);
   };
 
-  const closeAddModal = () => {
+  const closeModal = () => {
     setAddModalOpen(false);
+    setDeleteModalOpen(false);
   };
 
   const saveTag = async () => {
     try {
-      const res = await axios.post(`http://localhost:4000/tag`, {
+      await axios.post(`http://localhost:4000/tag`, {
         tag: newTag,
       });
       fechTags();
       setAddModalOpen(false);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const deleteTag = async () => {
+    try {
+      await axios.delete(`http://localhost:4000/tag/${tag?._id}`);
+      fechTags();
+      setDeleteModalOpen(false);
     } catch (err) {
       console.log(err);
     }
@@ -65,7 +77,7 @@ const ManageTags = () => {
         </header>
         <Modal
           show={addModalOpen}
-          onHide={closeAddModal}
+          onHide={closeModal}
           aria-labelledby="contained-modal-title-vcenter"
           centered
         >
@@ -87,6 +99,21 @@ const ManageTags = () => {
           <Modal.Footer>
             <Button variant="primary" onClick={saveTag}>
               Create
+            </Button>
+          </Modal.Footer>
+        </Modal>
+        <Modal
+          show={deleteModalOpen}
+          onHide={closeModal}
+          aria-labelledby="contained-modal-title-vcenter"
+          centered
+        >
+          <Modal.Header closeButton>
+            <Modal.Title>Delete Tag</Modal.Title>
+          </Modal.Header>
+          <Modal.Footer>
+            <Button variant="primary" onClick={deleteTag}>
+              Delete
             </Button>
           </Modal.Footer>
         </Modal>
