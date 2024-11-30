@@ -31,6 +31,16 @@ router.post('/recipe', async (req, res) => {
   }
 });
 
+router.post('/tag', async (req, res) => {
+  try {
+    const tag = new Tag(req.body);
+    const newTag = await tag.save();
+    res.status(201).json(newTag);
+  } catch (err) {
+    res.status(500).json({ message: err.mesage })
+  }
+});
+
 router.delete('/recipe/:id', async (req, res) => {
   try {
     const deletedRecipe = await Recipe.deleteOne({ _id: req.params.id }); 
@@ -42,6 +52,32 @@ router.delete('/recipe/:id', async (req, res) => {
     res.status(200).json({ message: 'Recipe deleted successfully' });
   } catch (err) {
     res.status(500).json({ message: err.message });
+  }
+});
+
+router.delete('/tag/:id', async (req, res) =>{
+  try {
+      const deletedTag = await Tag.deleteOne({_id: req.params.id });
+
+      if (deletedTag.deletedCount === 0){
+        return res.status(404).json({message: 'Tag not found'});
+      }
+
+      res.status(200).json({ maeeage: 'Tag deleted' })
+  } catch (err) {
+    res.status(500).json({ message: err.mesage });
+  }
+});
+
+router.patch('/tag/:id', async (req, res) => {
+  try {
+    const updatedTag = await Tag.findByIdAndUpdate(req.params.id, {$set: req.body}, {new: true});
+    if(!updatedTag){
+      res.status(404).json({ message:  'Tag not found'});
+    }
+    res.status(200).json(updatedTag)
+  } catch (err) {
+    res.status(500).json({ massage: err.mesage })
   }
 });
 

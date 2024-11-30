@@ -1,12 +1,11 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Tag from "./interfaces/Tag";
 import EditableList from "./EditableList";
 import { Button } from "react-bootstrap";
 
 const ManageTags = () => {
   // ToDo
-  // on page load get all tags
   // copy code from search results for clickable list
   // copy code from editable list to make delete option
   // copy code from delete recipe for popup to add recipe
