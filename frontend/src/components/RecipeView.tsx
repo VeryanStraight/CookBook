@@ -23,7 +23,7 @@ const RecipeVeiw: React.FC<Props> = ({ recipe }) => {
   const getTags = async () => {
     try {
       console.log({ tagIds: recipe.tags });
-      const res = await axios.post(`https://localhost:4000/tags/retrieve`, {
+      const res = await axios.post(`http://localhost:4000/tags/retrieve`, {
         tagIds: recipe.tags,
       });
       console.log(res.data);
@@ -63,8 +63,13 @@ const RecipeVeiw: React.FC<Props> = ({ recipe }) => {
           <Modal.Title>About</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <p>Serves: {recipe.serves}</p>
-          <List items={tags.map((tag) => tag.tag)} />
+          {recipe.serves > 0 && <p>Serves: {recipe.serves}</p>}
+          {tags.length > 0 && (
+            <>
+              <p>Tags:</p>
+              <List items={tags.map((tag) => tag.tag)} />
+            </>
+          )}
         </Modal.Body>
       </Modal>
     </>
