@@ -1,4 +1,4 @@
-import List from "./List";
+import List from "./util/List";
 import { useLocation } from "react-router-dom";
 import Recipe from "./interfaces/Recipe";
 import { useEffect, useState } from "react";

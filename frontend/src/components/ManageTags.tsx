@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Tag from "./interfaces/Tag";
-import EditableList from "./EditableList";
+import EditableList from "./util/EditableList";
 import { Button, Form, Modal } from "react-bootstrap";
 
 const ManageTags = () => {

@@ -2,9 +2,9 @@ import AddRecipe from "./components/AddRecipe";
 import DeleteRecipe from "./components/DeleteRecipe";
 import HomePage from "./components/HomePage";
 import ManageTags from "./components/ManageTags";
-import NavBarBig from "./components/NavBarBig";
-import NavBarSmall from "./components/NavBarSmall";
-import RecipeVeiw from "./components/RecipeView";
+import NavBarBig from "./components/util/NavBarBig";
+import NavBarSmall from "./components/util/NavBarSmall";
+import RecipeVeiw from "./components/util/RecipeView";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {

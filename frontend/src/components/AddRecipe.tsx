@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import axios from "axios";
-import EditableList from "./EditableList";
+import EditableList from "./util/EditableList";
 import Tag from "./interfaces/Tag";
 import Recipe from "./interfaces/Recipe";
 import { Alert } from "react-bootstrap";
