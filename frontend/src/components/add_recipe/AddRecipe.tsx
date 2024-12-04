@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import axios from "axios";
-import EditableList from "./util/EditableList";
-import Tag from "./interfaces/Tag";
-import Recipe from "./interfaces/Recipe";
+import EditableList from "../util/EditableList";
+import Tag from "../interfaces/Tag";
+import Recipe from "../interfaces/Recipe";
 import { Alert } from "react-bootstrap";
+import AddTitle from "./AddTitle";
 
 const AddRecipe = () => {
   //setting up variables
@@ -117,17 +118,7 @@ const AddRecipe = () => {
   return (
     <>
       <Form onSubmit={handleSubmit}>
-        {/* title input */}
-        <Form.Group controlId="formTitle">
-          <Form.Label>Recipe Title</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Enter Title"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            onKeyDown={handleKeyDown}
-          />
-        </Form.Group>
+        <AddTitle name={name} setName={setName} handleKeyDown={handleKeyDown} />
 
         {/* ingredients input and list */}
         <Form.Group controlId="formIngredients">

@@ -1,10 +1,10 @@
-import List from "./util/List";
+import List from "./List";
 import { useLocation } from "react-router-dom";
-import Recipe from "./interfaces/Recipe";
+import Recipe from "./../interfaces/Recipe";
 import { useEffect, useState } from "react";
 import { Button, Modal } from "react-bootstrap";
 import axios from "axios";
-import Tag from "./interfaces/Tag";
+import Tag from "./../interfaces/Tag";
 
 interface Props {
   recipe?: Recipe;

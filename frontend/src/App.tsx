@@ -1,4 +1,4 @@
-import AddRecipe from "./components/AddRecipe";
+import AddRecipe from "./components/add_recipe/AddRecipe";
 import DeleteRecipe from "./components/DeleteRecipe";
 import HomePage from "./components/HomePage";
 import ManageTags from "./components/ManageTags";
