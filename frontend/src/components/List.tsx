@@ -5,7 +5,6 @@ interface Props {
 const IngredentsList = ({ items }: Props) => {
   return (
     <>
-      <h1>Ingredents</h1>
       <ul className={"list-group"}>
         {items.map((item) => (
           <li className="list-group-item" key={item}>

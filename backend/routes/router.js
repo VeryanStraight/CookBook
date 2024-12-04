@@ -81,6 +81,14 @@ router.patch('/tag/:id', async (req, res) => {
   }
 });
 
+router.post('/tags/retrieve', async (req, res) => {
+  try{
+    const tags = await Tag.find({'_id': {$in: req.body.tagIds}});
+    res.status(200).json(tags);
+  } catch (err) {
+    res.status(500).json({ massage: err.mesage })
+  }
+});
 
   
 
