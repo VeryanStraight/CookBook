@@ -4,10 +4,16 @@ import { Form } from "react-bootstrap";
 interface Props {
   name: string;
   setName: React.Dispatch<React.SetStateAction<string>>;
-  handleKeyDown: (e: React.KeyboardEvent) => void;
 }
 
-const AddTitle: React.FC<Props> = ({ name, setName, handleKeyDown }) => {
+const AddTitle: React.FC<Props> = ({ name, setName }) => {
+  //stops the form from submitting each time someone presses enter
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+    }
+  };
+
   return (
     <Form.Group controlId="formTitle">
       <Form.Label>Recipe Title</Form.Label>
