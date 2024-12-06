@@ -5,7 +5,7 @@ interface Props {
   removeItem: (index: number) => void;
 }
 
-const EditableList = ({ items, removeItem }: Props) => {
+const EditableList: React.FC<Props> = ({ items, removeItem }) => {
   return (
     <>
       <ul className={"list-group"}>

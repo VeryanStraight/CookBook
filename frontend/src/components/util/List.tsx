@@ -2,7 +2,7 @@ interface Props {
   items: string[];
 }
 
-const IngredentsList = ({ items }: Props) => {
+const IngredentsList: React.FC<Props> = ({ items }) => {
   return (
     <>
       <ul className={"list-group"}>
