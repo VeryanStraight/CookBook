@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import Recipe from "./interfaces/Recipe";
-import Search from "./Search";
+import Search from "./search/Search";
 import "./style.css";
 
 const HomePage = () => {

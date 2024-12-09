@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import Recipe from "./interfaces/Recipe";
-import Search, { SearchHandles } from "./Search";
+import Search, { SearchHandles } from "./search/Search";
 import { Button, Modal } from "react-bootstrap";
 import RecipeView from "./util/RecipeView";
 import axios from "axios";
