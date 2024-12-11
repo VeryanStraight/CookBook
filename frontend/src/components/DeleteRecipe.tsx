@@ -71,7 +71,7 @@ const DeleteRecipe = () => {
             Cancel
           </Button>
           <Button variant="primary" onClick={deleteRecipe}>
-            OK
+            Delete
           </Button>
         </Modal.Footer>
       </Modal>

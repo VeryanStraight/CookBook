@@ -1,8 +1,8 @@
 export default interface Recipe {
   _id: string | undefined;
-  name: String;
+  name: string;
   serves: number;
-  ingredients: { amount: String; ingredient: String }[];
-  instructions: String;
-  tags: String[];
+  ingredients: { amount: string; ingredient: string }[];
+  instructions: string;
+  tags: string[];
 }
