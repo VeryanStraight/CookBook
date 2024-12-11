@@ -41,6 +41,15 @@ router.post('/tag', async (req, res) => {
   }
 });
 
+router.post('/tags/retrieve', async (req, res) => {
+  try{
+    const tags = await Tag.find({'_id': {$in: req.body.tagIds}});
+    res.status(200).json(tags);
+  } catch (err) {
+    res.status(500).json({ massage: err.mesage })
+  }
+});
+
 router.delete('/recipe/:id', async (req, res) => {
   try {
     const deletedRecipe = await Recipe.findByIdAndDelete(req.params.id); 
@@ -81,10 +90,13 @@ router.patch('/tag/:id', async (req, res) => {
   }
 });
 
-router.post('/tags/retrieve', async (req, res) => {
-  try{
-    const tags = await Tag.find({'_id': {$in: req.body.tagIds}});
-    res.status(200).json(tags);
+router.patch('/recipe/:id', async (req, res) => {
+  try {
+    const updatedRecipe = await Recipe.findByIdAndUpdate(req.params.id, {$set: req.body}, {new: true});
+    if(!updatedRecipe){
+      res.status(404).json({ message:  'Recipe not found'});
+    }
+    res.status(200).json(updatedRecipe)
   } catch (err) {
     res.status(500).json({ massage: err.mesage })
   }
