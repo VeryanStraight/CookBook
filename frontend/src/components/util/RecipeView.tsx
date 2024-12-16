@@ -11,10 +11,21 @@ import AddMethod from "../add_recipe/AddMethod";
 import AddIngredients from "../add_recipe/AddIngredients";
 import AddTitle from "../add_recipe/AddTitle";
 
+/**
+ * Props for the RecipeVeiw component.
+ *
+ * @property {Recipe} recipe - The recipe to display.
+ */
 interface Props {
   recipe?: Recipe;
 }
 
+/**
+ * RecipeVeiw component displays a recipe.
+ *
+ * @param {Props} props - The props for the component.
+ * @returns
+ */
 const RecipeVeiw: React.FC<Props> = ({ recipe }) => {
   const [aboutModalOpen, setAboutModalOpen] = useState<boolean>(false);
   const [editModalOpen, setEditModalOpen] = useState<boolean>(false);
@@ -55,11 +66,11 @@ const RecipeVeiw: React.FC<Props> = ({ recipe }) => {
     const updateRecipe = {
       name: name !== recipe.name ? name : undefined,
       serves: serves !== recipe.serves ? serves : undefined,
-      ingredients: ingredients !== recipe.ingredients ? ingredients : undefined, //check
+      ingredients: ingredients !== recipe.ingredients ? ingredients : undefined,
       instructions:
         instructions !== recipe.instructions ? instructions : undefined,
       tags:
-        selectedTags !== tags ? selectedTags.map((tag) => tag._id) : undefined, //check
+        selectedTags !== tags ? selectedTags.map((tag) => tag._id) : undefined,
     };
     console.log(updateRecipe);
     setEditModalOpen(false);

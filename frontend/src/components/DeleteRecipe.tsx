@@ -5,6 +5,11 @@ import { Button, Modal } from "react-bootstrap";
 import RecipeView from "./util/RecipeView";
 import axios from "axios";
 
+/**
+ * DeleteRecipe components alows searching recipes and deleting them.
+ *
+ * @returns {JSX.Element} - The rendered delete page.
+ */
 const DeleteRecipe = () => {
   const searchRef = useRef<SearchHandles>(null);
   const [recipe, setRecipe] = useState<Recipe>();

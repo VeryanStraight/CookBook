@@ -3,6 +3,7 @@ const router = express.Router()
 const Recipe = require('../models/recipe');
 const Tag = require('../models/tag');
 
+// finds all recipes that contain a given phrase 
 router.get('/recipe/search/:name', async (req, res) => {
     try {
       const recipes = await Recipe.find({ name: { $regex: req.params.name, $options: 'i' } });
@@ -12,6 +13,7 @@ router.get('/recipe/search/:name', async (req, res) => {
     }
 });
 
+// gets all tags from the database
 router.get('/tags', async (req, res) => {
   try {
     const tags = await Tag.find({});
@@ -21,6 +23,7 @@ router.get('/tags', async (req, res) => {
   }
 });
 
+// adds a new recipe to the database
 router.post('/recipe', async (req, res) => {
   try {
     const recipe = new Recipe(req.body);
@@ -31,6 +34,7 @@ router.post('/recipe', async (req, res) => {
   }
 });
 
+// add a new tag to the database
 router.post('/tag', async (req, res) => {
   try {
     const tag = new Tag(req.body);
@@ -41,6 +45,7 @@ router.post('/tag', async (req, res) => {
   }
 });
 
+// takes a list of tag id's and returns the tags
 router.post('/tags/retrieve', async (req, res) => {
   try{
     const tags = await Tag.find({'_id': {$in: req.body.tagIds}});
@@ -50,6 +55,8 @@ router.post('/tags/retrieve', async (req, res) => {
   }
 });
 
+
+// deletes a recipe from the database
 router.delete('/recipe/:id', async (req, res) => {
   try {
     const deletedRecipe = await Recipe.findByIdAndDelete(req.params.id); 
@@ -64,6 +71,8 @@ router.delete('/recipe/:id', async (req, res) => {
   }
 });
 
+
+// deletes a tag from the database
 router.delete('/tag/:id', async (req, res) =>{
   try {
       const deletedTag = await Tag.findByIdAndDelete(req.params.id);
@@ -78,6 +87,7 @@ router.delete('/tag/:id', async (req, res) =>{
   }
 });
 
+// updates a tag value
 router.patch('/tag/:id', async (req, res) => {
   try {
     const updatedTag = await Tag.findByIdAndUpdate(req.params.id, {$set: req.body}, {new: true});
@@ -90,6 +100,7 @@ router.patch('/tag/:id', async (req, res) => {
   }
 });
 
+// updates a recipe
 router.patch('/recipe/:id', async (req, res) => {
   try {
     const updatedRecipe = await Recipe.findByIdAndUpdate(req.params.id, {$set: req.body}, {new: true});

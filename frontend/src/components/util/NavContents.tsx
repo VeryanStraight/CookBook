@@ -1,5 +1,9 @@
 import { Nav } from "react-bootstrap";
 
+/**
+ * NavBarContents component contains the links of the nav bars
+ * @returns {JSX.Element} - the rendered links.
+ */
 const NavContents = () => {
   return (
     <>

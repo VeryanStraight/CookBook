@@ -1,6 +1,10 @@
 import { Nav } from "react-bootstrap";
 import NavContents from "./NavContents";
 
+/**
+ * NavBarBig component is the nav bar for large screen sizes.
+ * @returns {JSX.Element} - the rendered big nav bar.
+ */
 const NavBarBig = () => {
   return (
     <div
