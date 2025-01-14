@@ -7,7 +7,7 @@ const HomePage = () => {
   const navigate = useNavigate();
 
   const onClick = (recipe: Recipe) => {
-    navigate("/recipe", { state: recipe });
+    navigate("CookBook/recipe", { state: recipe });
   };
 
   return (

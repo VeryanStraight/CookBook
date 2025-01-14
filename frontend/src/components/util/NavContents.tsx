@@ -7,10 +7,10 @@ import { Nav } from "react-bootstrap";
 const NavContents = () => {
   return (
     <>
-      <Nav.Link href="/">Home</Nav.Link>
-      <Nav.Link href="/addRecipe">Add Recipe</Nav.Link>
-      <Nav.Link href="/deleteRecipe">Delete Recipe</Nav.Link>
-      <Nav.Link href="/manageTags">Manage Tags</Nav.Link>
+      <Nav.Link href="/CookBook/">Home</Nav.Link>
+      <Nav.Link href="/CookBook/addRecipe">Add Recipe</Nav.Link>
+      <Nav.Link href="/CookBook/deleteRecipe">Delete Recipe</Nav.Link>
+      <Nav.Link href="/CookBook/manageTags">Manage Tags</Nav.Link>
     </>
   );
 };
