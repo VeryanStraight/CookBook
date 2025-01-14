@@ -1,7 +1,7 @@
 import { useState, useImperativeHandle, forwardRef } from "react";
 import axios from "axios";
 import SearchResults from "./SearchResults";
-import Recipe from "./interfaces/Recipe";
+import Recipe from "../interfaces/Recipe";
 
 interface Props {
   onClick: (recipe: Recipe) => void;

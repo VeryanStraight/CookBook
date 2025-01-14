@@ -2,6 +2,12 @@ import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import EditableList from "../util/EditableList";
 
+/**
+ * Props for the AddIngredients component.
+ *
+ * @property {React.Dispatch<React.SetStateAction<{ amount: string; ingredient: string }[]>>} setIngredients - Function to set the list of ingredients.
+ * @property {{ amount: string; ingredient: string }[]} ingredients - Array of ingredient objects.
+ */
 interface Props {
   setIngredients: React.Dispatch<
     React.SetStateAction<{ amount: string; ingredient: string }[]>
@@ -9,6 +15,11 @@ interface Props {
   ingredients: { amount: string; ingredient: string }[];
 }
 
+/** Component to add ingredients.
+ *
+ * @param {Props} props - The props for the component.
+ * @returns {React.FC<Props>} The AddIngredients component.
+ */
 const AddIngredents: React.FC<Props> = ({ ingredients, setIngredients }) => {
   const [ingredientsText, setIngredientsText] = useState<string>("");
 
@@ -42,7 +53,6 @@ const AddIngredents: React.FC<Props> = ({ ingredients, setIngredients }) => {
 
   return (
     <>
-      {" "}
       <Form.Group controlId="formIngredients">
         <Form.Label>Ingredients</Form.Label>
         <Button variant="primary" type="button" onClick={addIngredient}>

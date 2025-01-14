@@ -7,6 +7,7 @@ const tagSchema = new mongoose.Schema({
     }
 });
 
+//if the tag is deleted, makes sure it is removed from all recipe tag lists
 tagSchema.post('findOneAndDelete', async function(doc){
     if(doc) {
         const Recipe = mongoose.model('Recipe');
