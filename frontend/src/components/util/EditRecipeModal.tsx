@@ -73,7 +73,7 @@ const EditRecileModal: React.FC<Props> = ({
 
     try {
       await axios.patch(
-        `http://localhost:4000/recipe/${recipe._id}`,
+        `http://localhost:4000/CookBook/recipe/${recipe._id}`,
         updateRecipe
       );
     } catch (err) {

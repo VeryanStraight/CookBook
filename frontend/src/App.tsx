@@ -15,11 +15,11 @@ function App() {
         <NavBarBig />
         <div className="flex-grow-1 p-3">
           <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/recipe" element={<RecipeVeiw />} />
-            <Route path="/addRecipe" element={<AddRecipe />} />
-            <Route path="/deleteRecipe" element={<DeleteRecipe />} />
-            <Route path="/manageTags" element={<ManageTags />} />
+            <Route path="CookBook/" element={<HomePage />} />
+            <Route path="CookBook/recipe" element={<RecipeVeiw />} />
+            <Route path="CookBook/addRecipe" element={<AddRecipe />} />
+            <Route path="CookBook/deleteRecipe" element={<DeleteRecipe />} />
+            <Route path="CookBook/manageTags" element={<ManageTags />} />
           </Routes>
         </div>
       </div>
