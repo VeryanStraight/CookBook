@@ -11,6 +11,7 @@ function App() {
   return (
     <Router>
       <div className="d-flex flex-column flex-md-row top-div">
+        <div className="col-2 border-end d-none d-md-block background-cover" />
         <NavBarSmall />
         <NavBarBig />
         <div className="flex-grow-1 p-3">
@@ -22,6 +23,7 @@ function App() {
             <Route path="CookBook/manageTags" element={<ManageTags />} />
           </Routes>
         </div>
+        <div className="col-2 border-start d-none d-md-block background-cover" />
       </div>
     </Router>
   );

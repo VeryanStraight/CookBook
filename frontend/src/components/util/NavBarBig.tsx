@@ -7,13 +7,10 @@ import NavContents from "./NavContents";
  */
 const NavBarBig = () => {
   return (
-    <div
-      className="d-none d-md-block"
-      style={{ width: "200px", height: "100%" }}
-    >
+    <div className="d-none d-md-block">
       <Nav
         className="flex-column p-3 bg-body-tertiary"
-        style={{ height: "100%" }}
+        style={{ width: "200px", minHeight: "100vh" }}
       >
         <NavContents />
       </Nav>
