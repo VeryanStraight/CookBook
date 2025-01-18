@@ -53,7 +53,9 @@ const DeleteRecipe = () => {
 
   return (
     <>
-      <h1>Delete Recipe</h1>
+      <h1 className="text-center text-dark format-heading mb-4">
+        Delete Recipe
+      </h1>
       <Search ref={searchRef} onClick={onClick} />
       <Modal
         show={modalOpen}

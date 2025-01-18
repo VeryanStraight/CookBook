@@ -55,9 +55,6 @@ const AddIngredents: React.FC<Props> = ({ ingredients, setIngredients }) => {
     <>
       <Form.Group controlId="formIngredients">
         <Form.Label>Ingredients</Form.Label>
-        <Button variant="primary" type="button" onClick={addIngredient}>
-          Submit Ingredents
-        </Button>
         <Form.Control
           as="textarea"
           rows={3}
@@ -67,6 +64,9 @@ const AddIngredents: React.FC<Props> = ({ ingredients, setIngredients }) => {
 1 Cup|pasta"
           onChange={(e) => setIngredientsText(e.target.value)}
         />
+        <Button variant="primary" type="button" onClick={addIngredient}>
+          Add Ingredents
+        </Button>
         {ingredients.length > 0 && (
           <EditableList
             items={ingredients.map((item) => ({

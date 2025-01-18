@@ -1,4 +1,4 @@
-import { Button } from "react-bootstrap";
+import { CloseButton, ListGroup } from "react-bootstrap";
 
 /**
  * Props for the EditableList component.
@@ -21,14 +21,17 @@ interface Props {
 const EditableList: React.FC<Props> = ({ items, removeItem }) => {
   return (
     <>
-      <ul className={"list-group"}>
+      <ListGroup>
         {items.map((item, i) => (
-          <li className="list-group-item" key={item.id + i}>
+          <ListGroup.Item
+            className="d-flex justify-content-between align-items-center"
+            key={item.id + i}
+          >
             {item.value}
-            <Button variant="primary" onClick={() => removeItem(i)}></Button>
-          </li>
+            <CloseButton onClick={() => removeItem(i)} />
+          </ListGroup.Item>
         ))}
-      </ul>
+      </ListGroup>
     </>
   );
 };

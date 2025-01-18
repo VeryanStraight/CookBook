@@ -7,5 +7,12 @@
   }
 
 .top-div {
-  height: 100vh;
+  min-height: 100vh;
+}
+
+.background-cover {
+  background-image: url('cakeBackground.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: repeat;
 }

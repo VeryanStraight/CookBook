@@ -49,6 +49,7 @@ const AddRecipe = () => {
 
   return (
     <>
+      <h1 className="text-center text-dark format-heading mb-4">Add Recipe</h1>
       <Form onSubmit={handleSubmit}>
         <AddTitle name={name} setName={setName} />
 
