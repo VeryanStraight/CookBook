@@ -11,8 +11,9 @@
 }
 
 .background-cover {
-  background-image: url('/cakeBackground.png');
+  /* background-image: url('/cakeBackground.png');
   background-size: cover;
   background-position: center;
-  background-repeat: repeat;
+  background-repeat: repeat; */
+  background-color: #aad1eb;
 }
